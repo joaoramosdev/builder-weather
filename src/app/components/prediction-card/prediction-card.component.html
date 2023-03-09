@@ -1,0 +1,10 @@
+<div class="prediction-card-wrapper">
+  <mat-card class="prediction-card-wrapper__card">
+    <div class="prediction-card-wrapper__card__title">{{getWeekDay(prediction.dt_txt)}}</div>
+    <img [src]="getImageUrl(prediction)" class="prediction-card-wrapper__card__image">
+    <div class="prediction-card-wrapper__card__details">
+      <span class="prediction">{{prediction.main.temp_max}}° </span>
+      <span class="prediction">{{prediction.main.temp_min}}°</span>
+    </div>
+  </mat-card>
+</div>

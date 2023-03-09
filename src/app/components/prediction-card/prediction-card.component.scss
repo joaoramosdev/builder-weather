@@ -1,0 +1,33 @@
+.prediction-card-wrapper {
+
+  &__card {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+    margin: 15px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    &__title {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    &__image {}
+
+    &__details {
+      font-weight: 600;
+
+      .prediction {
+        &:last-child {
+          color: #7f7f7f;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}

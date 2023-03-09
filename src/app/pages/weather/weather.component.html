@@ -1,0 +1,57 @@
+<div class="weather-page-wrapper">
+  <img src="{{locationImageUrl}}" class="weather-page-wrapper__background">
+  <div class="weather-page-wrapper__search">
+    <mat-form-field appearance="outline">
+      <mat-label>Zip Code</mat-label>
+      <input type="text" matInput placeholder="ZIP Code" [(ngModel)]="zipCode">
+      <button matSuffix mat-icon-button aria-label="Clear" (click)="seachByZIP(zipCode)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="weather-page-wrapper__info">
+    <div class="weather-page-wrapper__info__header">
+      Result for: <span class="city">{{cityPrediction?.name}}</span>
+    </div>
+    <div class="weather-page-wrapper__info__content" *ngIf="selectedDate">
+      <div class="weather-details">
+        <img src='https://openweathermap.org/img/wn/{{selectedDate[0]?.weather[0]?.icon}}@2x.png'>
+        <span class="temperature">{{math.trunc(selectedDate[0].main.temp)}} <span class="temperature-detail">°F</span>
+        </span>
+        <span class="weather-information">
+          <div class="info" *ngIf="selectedDate[0]?.rain">
+            Precipitation: {{selectedDate[0]?.rain['3h']}}mm
+          </div>
+          <div class="info">
+            Humidity: {{selectedDate[0].main.humidity}}%
+          </div>
+          <div class="info">
+            Wind: {{selectedDate[0].wind.speed}}km/h
+          </div>
+        </span>
+      </div>
+      <div class="weather-details">
+        <span class="weather-information">
+          <div class="title">
+            Weather
+          </div>
+          <div class="info">
+            {{moment(selectedDate[0].dt_txt).format('dddd, hA')}}
+          </div>
+          <div class="info">
+            {{selectedDate[0].weather[0].description}}
+          </div>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+  <app-predictions-chart [selectedDate]="selectedDate" [changing]="_dateChanged"></app-predictions-chart>
+
+  <div class=" weather-page-wrapper__dates">
+    <app-prediction-card [prediction]="item[0]" *ngFor="let item of predictionList" (click)="selectDate(item)">
+    </app-prediction-card>
+  </div>
+
+</div>
