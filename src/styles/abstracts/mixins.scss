@@ -1,0 +1,13 @@
+@import './variable.scss';
+
+@mixin media($size) {
+  @if $size == xs {
+    @media (max-width: $mobile-max) { @content; }
+  } @else if $size == sm {
+    @media (max-width: $tablet-max) { @content; }
+  } @else if $size == md {
+    @media (max-width: $laptop-max) { @content; }
+  } @else if $size == lg {
+    @media (max-width: $large-max) { @content; }
+  }
+}
